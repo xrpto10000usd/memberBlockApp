@@ -1,13 +1,17 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-
+import { Platform , BackHandler } from 'react-native';
 import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function TabLayout() {
+
   const colorScheme = useColorScheme();
+  console.log('TabLayout');
+  const exitApp = () => { if (Platform.OS === 'android') BackHandler.exitApp(); }
 
   return (
     <Tabs
@@ -26,10 +30,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name="explore"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
+          title: 'Back',
+          tabBarIcon: ({ color }) => <MaterialIcons name="arrow-back" size={24} color="black"
+                                                    onPress={exitApp} />, }}/>
     </Tabs>
   );
 }

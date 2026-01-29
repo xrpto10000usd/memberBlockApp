@@ -1,21 +1,26 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
+import { Stack , Slot, Redirect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
-
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import { useAuthStore } from '@/ts/auth/authStorage';
 
 export const unstable_settings = {
-  anchor: '(tabs)',
+  anchor: '(main)',
 };
 
 export default function RootLayout() {
+
   const colorScheme = useColorScheme();
+  const { token, userId , hasHydrated } = useAuthStore();
+  const isLogin = token && userId;
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        {/*}<Stack.Screen name="(main)" options={{ headerShown: false }} />*/}
+        <Stack.Screen name="mainMobileWebView" options={{ headerShown: false }} />
+        <Stack.Screen name="passCodeLogin" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
       </Stack>
       <StatusBar style="auto" />
