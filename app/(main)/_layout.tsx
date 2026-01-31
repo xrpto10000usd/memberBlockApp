@@ -10,7 +10,6 @@ import { MaterialIcons } from '@expo/vector-icons';
 export default function TabLayout() {
 
   const colorScheme = useColorScheme();
-  console.log('TabLayout');
   const exitApp = () => { if (Platform.OS === 'android') BackHandler.exitApp(); }
 
   return (

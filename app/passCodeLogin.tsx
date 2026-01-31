@@ -8,11 +8,12 @@ import { ThemedView } from '@/components/themed-view';
 import { Link } from 'expo-router';
 import { create } from 'zustand';
 import * as DeviceInfo from '@/ts/device';
-import * as auth from '@/ts/auth/auth';
+import auth from '@/ts/auth/auth';
 import { useAuthStore } from '@/ts/auth/authStorage';
 import { router, useRootNavigationState , Redirect } from 'expo-router';
 
-const numericKeyPad = auth.shuffleArray([1,2,3,4,5,6,7,8,9])
+const numericKeyPad = auth.shuffleArray();
+const finalNum = auth.finalNum();
 
 export default function PassCodeLogin() {
 
@@ -48,14 +49,17 @@ export default function PassCodeLogin() {
     });
   };
 
+  const passCodeReset = () => {
+     router.replace({ pathname:'/mainMobileWebView', params: { isLogin : false , passCodeReset : true }});
+  };
+
   useEffect(() => {
 
     const userPassCode = passCode.join('');
 
     if (userPassCode === '999999') {
-        console.log(userPassCode, ' <== userPassCode')
         setAuth('sampleToken', 'memberBlockDummy');
-        router.replace('/mainMobileWebView')
+        router.replace({ pathname:'/mainMobileWebView', params:{ isLogin : true , passCodeReset : false }});
     } else if (userPassCode.length === 6) {
         refresh();
         return;
@@ -108,8 +112,8 @@ export default function PassCodeLogin() {
            <TouchableOpacity style={styles.button} onPress={() => refresh()}>
              <Text style={styles.numKeyButton}>⟳</Text>
            </TouchableOpacity>
-           <TouchableOpacity style={styles.button} onPress={() => handlePress('0')}>
-             <Text style={styles.numKeyButton}>0</Text>
+           <TouchableOpacity style={styles.button} onPress={() => handlePress(finalNum)}>
+             <Text style={styles.numKeyButton}>{String(finalNum)}</Text>
            </TouchableOpacity>
            <TouchableOpacity style={styles.button} onPress={() => deletePassKey()}>
              <Text style={styles.numKeyButton}>⌫</Text>
@@ -117,7 +121,7 @@ export default function PassCodeLogin() {
          </View>
        </ThemedView>
        <ThemedView style={styles.passKeyForgot}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => passCodeReset()}>
                 <Text style={styles.passKeyForgotText}>Forgot My Passcode</Text>
             </TouchableOpacity>
        </ThemedView>

@@ -1,6 +1,7 @@
-# Welcome to your Expo app 👋
+이거 package.json, app.json 등 설정 파일 및 의존설정 절대 건들지 마삼
+아 놔
+그리고 JDK는 17로 까심
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 ## Get started
 
