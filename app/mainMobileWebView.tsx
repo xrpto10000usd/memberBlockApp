@@ -6,7 +6,7 @@ import { useAuthStore } from '@/ts/auth/authStorage';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useLocalSearchParams } from 'expo-router';
 
-export default function mainMobileWebView() {
+export default function MainMobileWebView() {
 
     const { isLogin , passCodeReset } = useLocalSearchParams();
     let memberBlockWeb = 'http://10.138.61.203:3000/member_block_ind/main/mainFront'

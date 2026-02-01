@@ -14,14 +14,13 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const { token, userId , hasHydrated } = useAuthStore();
   const isLogin = token && userId;
-
+  console.log(2222);
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        {/*}<Stack.Screen name="(main)" options={{ headerShown: false }} />*/}
+        <Stack.Screen name="(main)" options={{ headerShown: false }} />
         <Stack.Screen name="mainMobileWebView" options={{ headerShown: false }} />
         <Stack.Screen name="passCodeLogin" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

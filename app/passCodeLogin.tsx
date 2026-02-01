@@ -12,7 +12,7 @@ import auth from '@/ts/auth/auth';
 import { useAuthStore } from '@/ts/auth/authStorage';
 import { router, useRootNavigationState , Redirect } from 'expo-router';
 
-const numericKeyPad = auth.shuffleArray();
+const numericKeyPad = auth.shuffledArray();
 const finalNum = auth.finalNum();
 
 export default function PassCodeLogin() {
