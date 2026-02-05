@@ -18,7 +18,7 @@ export const useAuthStore = create<AuthState>()(
       userId: null,
       expiresAt: null,
       setAuth: (token, userId) =>
-        set({ token, userId, expiresAt: Date.now() + 199_000 }),
+        set({ token, userId, expiresAt: Date.now() + 99_000 }),
 
       logout: () =>
         set({ token: null, userId: null , expiresAt: null }),

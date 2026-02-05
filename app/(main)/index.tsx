@@ -4,9 +4,6 @@ import { useAuthStore } from '@/ts/auth/authStorage';
 import  MainMobileWebView  from '../mainMobileWebView';
 
 export default function index() {
-
-   const { token, userId, hasHydrated } = useAuthStore();
-   const navState = useRootNavigationState();
-
+   console.log(' rendering main')
    return  <MainMobileWebView /> ;
 }

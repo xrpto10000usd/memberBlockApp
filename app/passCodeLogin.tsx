@@ -1,16 +1,13 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet, TextInput , TouchableOpacity , View , Text } from 'react-native';
-import React, { useEffect, useState } from 'react';
 import { HelloWave } from '@/components/hello-wave';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
-import { create } from 'zustand';
-import * as DeviceInfo from '@/ts/device';
 import auth from '@/ts/auth/auth';
 import { useAuthStore } from '@/ts/auth/authStorage';
-import { router, useRootNavigationState , Redirect } from 'expo-router';
+import { Image } from 'expo-image';
+import { router } from 'expo-router';
+import { useEffect, useState } from 'react';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 const numericKeyPad = auth.shuffledArray();
 const finalNum = auth.finalNum();
@@ -50,7 +47,7 @@ export default function PassCodeLogin() {
   };
 
   const passCodeReset = () => {
-     router.replace({ pathname:'/mainMobileWebView', params: { isLogin : false , passCodeReset : true }});
+     router.replace({ pathname:'/mainMobileWebView', params: { path: '/member_block_ind'}});
   };
 
   useEffect(() => {
@@ -59,7 +56,7 @@ export default function PassCodeLogin() {
 
     if (userPassCode === '999999') {
         setAuth('sampleToken', 'memberBlockDummy');
-        router.replace({ pathname:'/mainMobileWebView', params:{ isLogin : true , passCodeReset : false }});
+        router.replace({ pathname:'/mainMobileWebView', params:{ path: '/member_block_ind/main/mainFront'}});
     } else if (userPassCode.length === 6) {
         refresh();
         return;
