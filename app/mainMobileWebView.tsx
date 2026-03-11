@@ -41,7 +41,7 @@ export default function MainMobileWebView() {
     if (!hasHydrated) {
        return null;
     }
-    if ( ( !token || !userId ) && !isPassCodeRest) {
+    if ( ( !token || !userId )) {
        console.log(token, userId)
        return <Redirect href="/passCodeLogin" />;
     }

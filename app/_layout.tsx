@@ -18,8 +18,9 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(main)" options={{ headerShown: false }} />
-        <Stack.Screen name="mainMobileWebView" options={{ headerShown: false }} />
-        <Stack.Screen name="passCodeLogin" options={{ headerShown: false }} />
+        {/*<Stack.Screen name="mainMobileWebView" options={{ headerShown: false }} /> */}
+        <Stack.Screen name="sampleGameMain" options={{ headerShown: false }} />
+        {/*<Stack.Screen name="passCodeLogin" options={{ headerShown: false }} />  */}
         <Stack.Screen name="uploadWithCamera" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />

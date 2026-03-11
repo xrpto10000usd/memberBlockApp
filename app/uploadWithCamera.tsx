@@ -22,7 +22,7 @@ export default function UploadWithCamera() {
 
             console.log('촬영 성공:', data.uri);
             setPhoto(data.uri);
-            router.replace('/mainMobileWebView', params:{ path: '/member_block_ind/main/mainUploadDocumentConfirm'})
+            //router.replace('/mainMobileWebView', params:{ path: '/member_block_ind/main/mainUploadDocumentConfirm'});
           } catch (e) {
             console.error('촬영 실패:', e);
             Alert.alert("에러", "사진을 촬영하지 못했습니다.");
